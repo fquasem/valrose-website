@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valrose Solutions — From Subject Matter Expert to Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF7F1;
+    --ink: #1C1E24;
+    --ink-soft: #4A4D57;
+    --brass: #A6743A;
+    --slate: #3B5960;
+    --line: #E4DFD3;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  img, svg { display: block; max-width: 100%; }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(250, 247, 241, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    z-index: 100;
+  }
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .brand span { color: var(--brass); }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .nav-links a { position: relative; padding: 4px 0; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 0; height: 1px;
+    background: var(--brass);
+    transition: width 0.25s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .cta-btn {
+    background: var(--ink);
+    color: var(--paper) !important;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 22px;
+    border-radius: 2px;
+    transition: background 0.2s ease;
+  }
+  .cta-btn:hover { background: var(--brass); }
+
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 120px 0 100px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.05;
+    max-width: 820px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--slate);
+  }
+  .hero p.sub {
+    margin-top: 28px;
+    font-size: 19px;
+    color: var(--ink-soft);
+    max-width: 560px;
+    line-height: 1.6;
+  }
+  .hero-actions {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .primary-btn {
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 16px 30px;
+    border-radius: 2px;
+    display: inline-block;
+    transition: background 0.2s ease;
+  }
+  .primary-btn:hover { background: var(--brass); }
+  .hero-note {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- SKILLS MATRIX (signature element) ---------- */
+  .matrix-section {
+    padding: 110px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-head {
+    max-width: 640px;
+    margin-bottom: 64px;
+  }
+  .section-head .eyebrow { margin-bottom: 16px; }
+  .section-head h2 {
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.2;
+  }
+  .section-head p {
+    margin-top: 18px;
+    color: var(--ink-soft);
+    font-size: 17px;
+  }
+
+  .matrix {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    align-items: stretch;
+    border: 1px solid var(--line);
+  }
+  .matrix-col {
+    padding: 44px 36px;
+  }
+  .matrix-col.before { background: #F1ECE2; }
+  .matrix-col.after { background: var(--ink); color: var(--paper); }
+  .matrix-col.after h3 { color: var(--paper); }
+  .matrix-col.after .row span:first-child { color: rgba(250,247,241,0.55); }
+  .matrix-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .matrix-col.after .matrix-label { color: rgba(250,247,241,0.6); }
+  .matrix-col h3 {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+  .matrix-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brass);
+    color: var(--paper);
+    padding: 0 26px;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 15px;
+  }
+  .matrix-col.after .row { border-bottom: 1px dashed rgba(250,247,241,0.18); }
+  .row:last-child { border-bottom: none; }
+  .row span:first-child { color: var(--ink-soft); }
+  .row span:last-child { font-weight: 500; text-align: right; }
+
+  @media (max-width: 820px) {
+    .matrix { grid-template-columns: 1fr; }
+    .matrix-arrow { padding: 20px 0; }
+  }
+
+  /* ---------- VIDEOS ---------- */
+  .videos-section {
+    padding: 110px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .video-card {
+    background: var(--paper);
+    padding: 34px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-height: 220px;
+    transition: background 0.2s ease;
+  }
+  .video-card:hover { background: #F1ECE2; }
+  .play-icon {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .play-icon svg { width: 11px; height: 11px; }
+  .video-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .video-card p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: auto;
+  }
+
+  @media (max-width: 820px) {
+    .video-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- ABOUT / CREDIBILITY ---------- */
+  .about-section {
+    padding: 110px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-grid p {
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    max-width: 480px;
+  }
+  .stat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .stat {
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+  }
+  .stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    color: var(--brass);
+  }
+  .stat .label {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  @media (max-width: 820px) {
+    .about-grid { grid-template-columns: 1fr; gap: 50px; }
+  }
+
+  /* ---------- FOOTER CTA ---------- */
+  .footer-cta {
+    padding: 120px 0;
+    text-align: center;
+  }
+  .footer-cta h2 {
+    font-size: clamp(30px, 5vw, 46px);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.15;
+  }
+  .footer-cta .primary-btn {
+    margin-top: 40px;
+  }
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 0;
+    font-size: 13px;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+  }
+  @media (max-width: 600px) {
+    footer .wrap { flex-direction: column; gap: 10px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Valrose <span>Solutions</span></div>
+    <div class="nav-links">
+      <a href="#matrix">Approach</a>
+      <a href="videos.html">Videos</a>
+      <a href="speaking.html">Speaking</a>
+    </div>
+    <a href="#book" class="cta-btn">Book a Call</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Coachsulting for Corporate Teams</div>
+    <h1>From Subject Matter <em>Expert</em> to <em>Leader</em>.</h1>
+    <p class="sub">Val Vigoda helps organizations turn their sharpest technical talent into leaders who can actually lead — through executive coaching, team workshops, and keynote speaking grounded in 25 years of practice.</p>
+    <div class="hero-actions">
+      <a href="#book" class="primary-btn">Book a Call</a>
+      <span class="hero-note">Incoming President, New England Association of Speakers</span>
+    </div>
+  </div>
+</section>
+
+<section class="matrix-section" id="matrix">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The Transformation</div>
+      <h2>What problem am I solving? This one.</h2>
+      <p>Being the best individual contributor in the room doesn't make someone a leader. Here's the skills shift every client works through.</p>
+    </div>
+    <div class="matrix">
+      <div class="matrix-col before">
+        <div class="matrix-label">Before</div>
+        <h3>Subject Matter Expert</h3>
+        <div class="row"><span>Decision-making</span><span>Solves it themselves</span></div>
+        <div class="row"><span>Communication</span><span>Explains the details</span></div>
+        <div class="row"><span>Value</span><span>Personal output</span></div>
+        <div class="row"><span>Feedback</span><span>Avoids giving it</span></div>
+        <div class="row"><span>Presence</span><span>Heads-down, reactive</span></div>
+      </div>
+      <div class="matrix-arrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="matrix-col after">
+        <div class="matrix-label">After</div>
+        <h3>Leader</h3>
+        <div class="row"><span>Decision-making</span><span>Builds others who can</span></div>
+        <div class="row"><span>Communication</span><span>Frames the "why"</span></div>
+        <div class="row"><span>Value</span><span>Team output</span></div>
+        <div class="row"><span>Feedback</span><span>Gives it early, plainly</span></div>
+        <div class="row"><span>Presence</span><span>Sets direction, present</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="videos-section" id="videos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Watch First</div>
+      <h2>Six ideas, three minutes each.</h2>
+      <p>Short, direct videos on the questions that come up most in coaching sessions — start wherever is most relevant to your team.</p>
+      <a href="videos.html" style="display:inline-block; margin-top:22px; font-size:14px; font-weight:500; color:var(--brass);">Watch all six →</a>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <h4>How do you measure inspiration?</h4>
+        <p>Inspiration vs. information — and why only one of them changes behavior.</p>
+      </div>
+      <div class="video-card">
+        <div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <h4>Approach vs. Avoidance Goals</h4>
+        <p>Why the goal you're running from matters as much as the one you're running toward.</p>
+      </div>
+      <div class="video-card">
+        <div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <h4>The Matrix Conundrum</h4>
+        <p>Leading a team that isn't really "yours" on the org chart.</p>
+      </div>
+      <div class="video-card">
+        <div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <h4>The Perception Gap</h4>
+        <p>What you think you're projecting vs. what your team actually sees.</p>
+      </div>
+      <div class="video-card">
+        <div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <h4>The Access Gap</h4>
+        <p>Why some team members get more of your time — and what that signals.</p>
+      </div>
+      <div class="video-card">
+        <div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <h4>Executive Presence</h4>
+        <p>The specific, learnable behaviors behind a vague-sounding phrase.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px;">About Val</div>
+        <p>Valerie "Val" Vigoda is a coachsultant — part executive coach, part consultant — working across one-to-one coaching, B2B team engagements, and keynote speaking. She partners with organizations to build the 360-degree assessment work behind lasting leadership change.</p>
+        <p>Her clients span health care, pharmaceuticals, biotechnology, manufacturing, hospitality, finance, engineering, and education.</p>
+      </div>
+      <div class="stat-list">
+        <div class="stat">
+          <div class="num">25+</div>
+          <div class="label">Years as a leader and educator</div>
+        </div>
+        <div class="stat">
+          <div class="num">500</div>
+          <div class="label">Newsletter subscribers and growing</div>
+        </div>
+        <div class="stat">
+          <div class="num">4</div>
+          <div class="label">Practice areas: coaching, B2B, speaking, assessments</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="footer-cta" id="book">
+  <div class="wrap">
+    <h2>Ready to build leaders, not just experts?</h2>
+    <a href="#" class="primary-btn">Book a Call</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© Valrose Solutions LLC</span>
+    <span>Boston, MA · 781-771-9496</span>
+  </div>
+</footer>
+
+</body>
+</html>

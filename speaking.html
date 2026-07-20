@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Val to Speak — Valrose Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF7F1;
+    --ink: #1C1E24;
+    --ink-soft: #4A4D57;
+    --brass: #A6743A;
+    --slate: #3B5960;
+    --line: #E4DFD3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .display { font-family: 'Fraunces', serif; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  nav {
+    position: sticky; top: 0;
+    background: rgba(250, 247, 241, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    z-index: 100;
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .brand { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; }
+  .brand span { color: var(--brass); }
+  .nav-links { display: flex; gap: 40px; font-size: 14px; font-weight: 500; color: var(--ink-soft); }
+  .nav-links a.active { color: var(--ink); }
+  .nav-links a:hover { color: var(--ink); }
+  .cta-btn { background: var(--ink); color: var(--paper) !important; font-size: 14px; font-weight: 500; padding: 12px 22px; border-radius: 2px; transition: background 0.2s ease; }
+  .cta-btn:hover { background: var(--brass); }
+  @media (max-width: 760px) { .nav-links { display: none; } }
+
+  .page-hero { padding: 100px 0 70px; border-bottom: 1px solid var(--line); }
+  .eyebrow { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brass); font-weight: 600; margin-bottom: 22px; }
+  .page-hero h1 { font-size: clamp(36px, 5.5vw, 58px); line-height: 1.08; max-width: 760px; }
+  .page-hero p.sub { margin-top: 24px; font-size: 18px; color: var(--ink-soft); max-width: 560px; line-height: 1.6; }
+  .credential-strip { margin-top: 40px; display: flex; gap: 32px; flex-wrap: wrap; font-size: 14px; color: var(--ink-soft); }
+  .credential-strip span { border-left: 2px solid var(--brass); padding-left: 12px; }
+
+  .topics-section { padding: 100px 0; border-bottom: 1px solid var(--line); }
+  .section-head { max-width: 640px; margin-bottom: 60px; }
+  .section-head h2 { font-size: clamp(28px, 4vw, 38px); line-height: 1.2; }
+  .section-head p { margin-top: 18px; color: var(--ink-soft); font-size: 17px; }
+
+  .topic-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .topic-card { background: var(--paper); padding: 46px 42px; }
+  .topic-card .tag { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brass); font-weight: 600; margin-bottom: 18px; }
+  .topic-card h3 { font-size: 27px; margin-bottom: 16px; }
+  .topic-card p { color: var(--ink-soft); font-size: 15px; }
+  @media (max-width: 820px) { .topic-cards { grid-template-columns: 1fr; } }
+
+  .formats-section { padding: 100px 0; border-bottom: 1px solid var(--line); }
+  .format-list { display: flex; flex-direction: column; }
+  .format-row { display: grid; grid-template-columns: 200px 1fr; gap: 40px; padding: 30px 0; border-top: 1px solid var(--line); }
+  .format-row:last-child { border-bottom: 1px solid var(--line); }
+  .format-row .label { font-family: 'Fraunces', serif; font-size: 20px; }
+  .format-row p { color: var(--ink-soft); font-size: 15px; max-width: 560px; }
+  @media (max-width: 700px) { .format-row { grid-template-columns: 1fr; gap: 8px; } }
+
+  .quote-section { padding: 100px 0; background: var(--ink); color: var(--paper); }
+  .quote-section blockquote { font-family: 'Fraunces', serif; font-size: clamp(24px, 3.4vw, 34px); font-style: italic; max-width: 780px; line-height: 1.4; }
+  .quote-section .attribution { margin-top: 28px; font-size: 14px; color: rgba(250,247,241,0.6); font-family: 'IBM Plex Sans', sans-serif; font-style: normal; }
+
+  .footer-cta { padding: 110px 0; text-align: center; }
+  .footer-cta h2 { font-size: clamp(28px, 4.5vw, 42px); max-width: 700px; margin: 0 auto; line-height: 1.15; }
+  .primary-btn { background: var(--ink); color: var(--paper); font-size: 15px; font-weight: 500; padding: 16px 30px; border-radius: 2px; display: inline-block; transition: background 0.2s ease; }
+  .primary-btn:hover { background: var(--brass); }
+  .footer-cta .primary-btn { margin-top: 36px; }
+
+  footer { border-top: 1px solid var(--line); padding: 36px 0; font-size: 13px; color: var(--ink-soft); display: flex; justify-content: space-between; }
+  @media (max-width: 600px) { footer .wrap { flex-direction: column; gap: 10px; text-align: center; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Valrose <span>Solutions</span></div>
+    <div class="nav-links">
+      <a href="index.html">Approach</a>
+      <a href="videos.html">Videos</a>
+      <a href="speaking.html" class="active">Speaking</a>
+    </div>
+    <a href="index.html#book" class="cta-btn">Book a Call</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Book Val</div>
+    <h1>Keynotes and workshops on the blind spots that quietly run every team.</h1>
+    <p class="sub">Val brings 25 years of leadership and organizational psychology to a stage or a conference room, built around two signature topics she's spent her career on.</p>
+    <div class="credential-strip">
+      <span>Incoming President, New England Association of Speakers</span>
+      <span>25+ years in leadership &amp; education</span>
+    </div>
+  </div>
+</section>
+
+<section class="topics-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Signature Topics</div>
+      <h2>Two ideas Val has built her whole practice around.</h2>
+      <p>These aren't the trending topic of the year. They're the two problems Val sees in every organization she works with, and the ones she's most passionate about solving.</p>
+    </div>
+    <div class="topic-cards">
+      <div class="topic-card">
+        <div class="tag">Talk One</div>
+        <h3>Blind Spots</h3>
+        <p>The gap between how you think you're showing up and how your team actually experiences you. Val walks audiences through how to find their own blind spots before someone else has to point them out.</p>
+      </div>
+      <div class="topic-card">
+        <div class="tag">Talk Two</div>
+        <h3>Feedback</h3>
+        <p>Why most feedback fails, and the specific shift that makes it land. A practical framework leaders can use the next day, not just a feel-good talk.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="formats-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Formats</div>
+      <h2>However your event is structured.</h2>
+    </div>
+    <div class="format-list">
+      <div class="format-row">
+        <div class="label">Keynote</div>
+        <p>45–60 minutes. Built for conferences, all-hands meetings, and leadership summits looking for a talk that sticks past the day itself.</p>
+      </div>
+      <div class="format-row">
+        <div class="label">Workshop</div>
+        <p>Half-day or full-day. Hands-on for leadership teams who want to work through their own blind spots and feedback loops together, not just hear about them.</p>
+      </div>
+      <div class="format-row">
+        <div class="label">Assessment Add-On</div>
+        <p>Pair either format with a 360 assessment through ECHO, so participants walk in with real data about their own gaps, not just theory.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="wrap">
+    <blockquote>"The best speakers don't tell you something new. They tell you something true, in a way you can finally hear it."</blockquote>
+    <div class="attribution">— Val, on what she's aiming for in every talk</div>
+  </div>
+</section>
+
+<section class="footer-cta" id="book">
+  <div class="wrap">
+    <h2>Have an event in mind?</h2>
+    <a href="index.html#book" class="primary-btn">Book Val to Speak</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© Valrose Solutions LLC</span>
+    <span>Boston, MA · 781-771-9496</span>
+  </div>
+</footer>
+
+</body>
+</html>
